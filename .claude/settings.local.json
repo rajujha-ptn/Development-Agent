@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx --yes create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --no-turbopack)",
+      "Read(//Users/rajujha/**)",
+      "Bash(npx eslint *)",
+      "Bash(cat /tmp/da-dev.log | tail -60)",
+      "Read(//private/tmp/**)"
+    ]
+  }
+}
