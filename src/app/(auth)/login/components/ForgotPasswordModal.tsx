@@ -12,7 +12,7 @@ export function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordModalProp
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm">
+    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm">
       <div className="w-full max-w-[650px] rounded-xl bg-white shadow-2xl">
         {/* Header */}
         <div className="flex items-start justify-between border-b border-zinc-200 p-6">

@@ -17,7 +17,7 @@ export function LoginCard() {
   }, []);
 
   return (
-    <div className="relative z-10 w-full max-w-lg">
+    <div className="relative w-full max-w-lg">
       {/* SignInTab */}
       <div className="absolute -top-8 left-4 md:left-6 origin-bottom rounded-t-lg bg-[#E3B755] px-4 md:px-6 py-2 text-xs font-bold uppercase tracking-wider text-black transition-transform duration-300 hover:scale-105 cursor-default">
         Agent Sign-In
@@ -83,7 +83,7 @@ export function LoginCard() {
 
           <div className="mt-1 flex items-center justify-between text-sm">
             <label className="group flex cursor-pointer items-center gap-2 font-medium text-zinc-700">
-              <div className="relative flex items-center justify-center">
+              <span className="relative flex items-center justify-center">
                 <input 
                   type="checkbox" 
                   name="remember" 
@@ -101,7 +101,7 @@ export function LoginCard() {
                 >
                   <path d="M5 13l4 4L19 7" />
                 </svg>
-              </div>
+              </span>
               <span className="transition-colors duration-300 group-hover:text-emerald-800">Remember me</span>
             </label>
             <button

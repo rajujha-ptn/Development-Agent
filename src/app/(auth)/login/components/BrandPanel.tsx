@@ -33,7 +33,7 @@ export function BrandPanel() {
             viewBox="0 0 1200 100"
             fill="none"
             preserveAspectRatio="none"
-            aria-hidden="true"
+            aria-hidden={true}
           >
             <path
               d="M 0 70 Q 250 110 500 80 T 1000 40 Q 1100 30 1200 50"
