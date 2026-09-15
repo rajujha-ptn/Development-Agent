@@ -24,3 +24,35 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Custom Green Scrollbar */
+.green-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.green-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.green-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #037957;
+  border-radius: 4px;
+}
+.green-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #037957 transparent;
+}
+
+/* Sidebar Specific Scrollbar */
+.sidebar-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sidebar-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #012519; /* Very dark green to stand out against the sidebar bg */
+  border-radius: 4px;
+}
+.sidebar-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #012519 transparent;
+}

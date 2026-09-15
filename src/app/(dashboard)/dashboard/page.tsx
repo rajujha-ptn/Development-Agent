@@ -1,7 +1,21 @@
+import { Metadata } from "next";
+import { TopHeader } from "./components/TopHeader";
+import { SummarySection } from "./components/SummarySection";
+import { TodayPlanListSection } from "./components/TodayPlanListSection";
+import { QuickActionsSection } from "./components/QuickActionsSection";
+
+export const metadata: Metadata = {
+  title: "Dashboard | OpenAgriNet",
+  description: "Overview of your agricultural tasks and progress.",
+};
+
 export default function DashboardPage() {
   return (
-    <div className="flex flex-col gap-4">
-      <h1 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">Overview</h1>
+    <div className="flex flex-col gap-6 w-full">
+      <TopHeader />
+      <SummarySection />
+      <TodayPlanListSection />
+      <QuickActionsSection />
     </div>
   );
 }

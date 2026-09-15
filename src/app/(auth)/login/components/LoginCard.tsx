@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { ForgotPasswordModal } from "./ForgotPasswordModal";
@@ -8,6 +9,12 @@ import { ForgotPasswordModal } from "./ForgotPasswordModal";
 export function LoginCard() {
   const [showPassword, setShowPassword] = useState(false);
   const [isForgotPasswordOpen, setIsForgotPasswordOpen] = useState(false);
+  const router = useRouter();
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    router.push('/dashboard');
+  };
 
   // Automatically clear URL query parameters if they exist
   useEffect(() => {
@@ -17,19 +24,26 @@ export function LoginCard() {
   }, []);
 
   return (
-    <div className="relative w-full max-w-lg">
+    <div className="group relative w-full max-w-lg transition-transform duration-500 ease-out hover:-translate-y-2">
       {/* SignInTab */}
-      <div className="absolute -top-8 left-4 md:left-6 origin-bottom rounded-t-lg bg-[#E3B755] px-4 md:px-6 py-2 text-xs font-bold uppercase tracking-wider text-black transition-transform duration-300 hover:scale-105 cursor-default">
+      <div className="absolute -top-[32px] left-4 md:left-6 z-0 rounded-t-lg bg-[#E3B755] px-4 md:px-6 pt-2 pb-5 text-xs font-bold uppercase tracking-wider text-black cursor-default">
         Agent Sign-In
       </div>
 
-      <div className="flex flex-col gap-6 md:gap-8 rounded-2xl bg-[#FAFAFA] p-6 sm:p-8 md:p-10 shadow-2xl transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.3)]">
+      <div className="relative z-10 flex flex-col gap-6 md:gap-8 rounded-2xl bg-[#FAFAFA] p-6 sm:p-8 md:p-10 shadow-2xl transition-shadow duration-500 ease-out group-hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.3)]">
         {/* LoginCardHeader */}
         <div className="flex flex-col items-center gap-4 md:gap-6 text-center">
           <div className="group flex cursor-default items-center justify-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-700 text-white transition-transform duration-500 ease-out group-hover:rotate-6 group-hover:scale-110">
-              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 21V9M12 9c0-3.5 2.5-6 6-6-.5 3.5-2.5 6-6 6ZM12 13c0-3-2-5-6-5 .5 3 2 5 6 5Z" />
+              <svg width="22" height="22" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clipPath="url(#clip0_707_6903)">
+                  <path d="M10.4993 7.152V5.25C10.4993 4.45435 10.8153 3.69129 11.3778 3.12868C11.9404 2.56607 12.7034 2.25 13.499 2.25H14.6238C14.7233 2.25 14.8187 2.28951 14.889 2.35984C14.9593 2.43016 14.9988 2.52554 14.9988 2.625V3.75C14.9988 4.54565 14.6828 5.30871 14.1202 5.87132C13.5577 6.43393 12.7947 6.75 11.9991 6.75C11.2035 6.75 10.4405 7.06607 9.87799 7.62868C9.31544 8.19129 8.9994 8.95435 8.9994 9.75M8.9994 9.75C8.9994 11.25 9.74933 12 9.74933 13.5C9.74933 14.3114 9.48618 15.1009 8.9994 15.75M8.9994 9.75C8.9994 9.05358 8.80549 8.37092 8.4394 7.77851C8.0733 7.1861 7.54949 6.70735 6.92666 6.3959C6.30382 6.08445 5.60657 5.95261 4.91304 6.01515C4.2195 6.0777 3.55708 6.33215 3 6.75C3 7.44642 3.19391 8.12908 3.56 8.72149C3.9261 9.3139 4.44991 9.79265 5.07274 10.1041C5.69558 10.4156 6.39283 10.5474 7.08636 10.4848C7.7799 10.4223 8.44232 10.1679 8.9994 9.75ZM3.74993 15.75H14.2489" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_707_6903">
+                    <rect width="18" height="18" fill="white" />
+                  </clipPath>
+                </defs>
               </svg>
             </div>
             <div className="text-left">
@@ -39,12 +53,12 @@ export function LoginCard() {
           </div>
           <div>
             <h2 className="text-2xl font-bold text-zinc-900">Sign in to your account</h2>
-            <p className="mt-1.5 text-sm text-zinc-500">Enter your credentials to access the agent portal.</p>
+            <p className="mt-1 text-sm text-zinc-500">Enter your credentials to access the agent portal.</p>
           </div>
         </div>
 
         {/* LoginForm */}
-        <form className="flex flex-col gap-5" onSubmit={(e) => e.preventDefault()}>
+        <form className="flex flex-col gap-5" onSubmit={handleLogin}>
           <div className="flex flex-col gap-1.5">
             <label className="text-sm font-bold text-zinc-700" htmlFor="email">Email address</label>
             <Input id="email" name="email" type="email" placeholder="Enter your email address" required className="bg-white transition-shadow duration-300 hover:border-emerald-400 focus:shadow-[0_0_0_3px_rgba(5,150,105,0.1)]" />
@@ -84,19 +98,19 @@ export function LoginCard() {
           <div className="mt-1 flex items-center justify-between text-sm">
             <label className="group flex cursor-pointer items-center gap-2 font-medium text-zinc-700">
               <span className="relative flex items-center justify-center">
-                <input 
-                  type="checkbox" 
-                  name="remember" 
-                  defaultChecked 
-                  className="peer h-[18px] w-[18px] cursor-pointer appearance-none rounded border-2 border-zinc-300 bg-white transition-all duration-300 checked:border-emerald-700 checked:bg-emerald-700 group-hover:border-emerald-500 group-hover:shadow-[0_0_0_4px_rgba(4,120,87,0.1)] group-active:scale-95" 
+                <input
+                  type="checkbox"
+                  name="remember"
+                  defaultChecked
+                  className="peer h-[18px] w-[18px] cursor-pointer appearance-none rounded border-2 border-zinc-300 bg-white transition-all duration-300 checked:border-emerald-700 checked:bg-emerald-700 group-hover:border-emerald-500 group-hover:shadow-[0_0_0_4px_rgba(4,120,87,0.1)] group-active:scale-95"
                 />
-                <svg 
-                  className="pointer-events-none absolute h-3.5 w-3.5 scale-50 text-white opacity-0 transition-all duration-300 ease-out peer-checked:scale-100 peer-checked:opacity-100" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth={3.5} 
-                  strokeLinecap="round" 
+                <svg
+                  className="pointer-events-none absolute h-3.5 w-3.5 scale-50 text-white opacity-0 transition-all duration-300 ease-out peer-checked:scale-100 peer-checked:opacity-100"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={3.5}
+                  strokeLinecap="round"
                   strokeLinejoin="round"
                 >
                   <path d="M5 13l4 4L19 7" />

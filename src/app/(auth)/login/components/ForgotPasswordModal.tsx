@@ -2,6 +2,8 @@
 
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
+import { createPortal } from "react-dom";
+import { useEffect, useState } from "react";
 
 interface ForgotPasswordModalProps {
   isOpen: boolean;
@@ -9,9 +11,15 @@ interface ForgotPasswordModalProps {
 }
 
 export function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordModalProps) {
-  if (!isOpen) return null;
+  const [mounted, setMounted] = useState(false);
 
-  return (
+  useEffect(() => {
+    const t = setTimeout(() => setMounted(true), 0); return () => clearTimeout(t);
+  }, []);
+
+  if (!isOpen || !mounted) return null;
+
+  return createPortal(
     <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm">
       <div className="w-full max-w-[650px] rounded-xl bg-white shadow-2xl">
         {/* Header */}
@@ -71,6 +79,7 @@ export function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordModalProp
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
